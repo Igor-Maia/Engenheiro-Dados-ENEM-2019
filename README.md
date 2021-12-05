@@ -31,3 +31,16 @@ Você deverá desempenhar as seguintes atividades:
   - Efetua a carga em blocos, 50000 registros por vez;
   - Efetua a inserção no banco Posgres somente dos registros que contem 'CO_UF_RESIDENCIA == 31'
   - Efetua as consultas SQL solicitadas no trabalho prático;
+### Problemas enfrentados
+- Efetuar a carga do dataframe enem2019 em uma vm com 10gb de memória RAM, apresenta falta de memória no kernel do Jupyter-Notebook  
+- Foi feita uma tentativa de carga chunked filtrando apenas os registros com CO_UF_RESIDENCIA == 31 com sucesso, porém ao enviar para o PostGreSQL usando to_sql, acontece falta de memória;
+
+### Solução funcional
+- A carga do CSV foi feita em chunks de 50000 registros, nestes chunks é feito o filtro CO_UF_RESIDENCIA == 31 e somente os registros filtrados do chunk são persistidos no PostGres.
+
+### Referências
+Vídeo Aulas - IGTI - BootCamp Engenheiro de dados, módulo 4, Pipelines de dados (Prof. Dr. Neylson Crepalde)
+https://pythontic.com/pandas/serialization/postgresql  
+https://medium.com/@apoor/quickly-load-csvs-into-postgresql-using-python-and-pandas-9101c274a92f  
+https://towardsdatascience.com/loading-large-datasets-in-pandas-11bdddd36f7b  
+https://chartio.com/resources/tutorials/how-to-execute-raw-sql-in-sqlalchemy/
