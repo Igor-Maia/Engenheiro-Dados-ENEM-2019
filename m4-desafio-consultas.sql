@@ -6,8 +6,7 @@ from public.enem2019mg;
 /*
  * 2  Qual é a média da nota em Linguagens e Códigos de todos os alunos mineiros?
  */
-select round(avg("NU_NOTA_LC")::numeric,1) 
-from public.enem2019mg;
+select round(avg("NU_NOTA_LC")::numeric,1) from public.enem2019mg;
 /* 
  * 3 Qual é a média da nota em Ciências Humanas dos alunos do sexo FEMININO
  * 	 mineiros?
